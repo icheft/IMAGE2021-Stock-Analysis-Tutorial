@@ -66,3 +66,7 @@ def main():
 
     stock_price()
     st.button('重新整理')
+
+
+if __name__ == '__main__':
+    main()

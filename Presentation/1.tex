@@ -1,0 +1,180 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usepackage{utopia} %font utopia imported
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontspec} 
+\newfontfamily\DejaSans{DejaVu Sans}
+
+\setCJKmainfont{PingFang TC}
+
+\usetheme{Frankfurt}
+\usecolortheme{seagull} % beaver
+
+\definecolor{pinky}{RGB}{219, 48, 122}
+
+\newcommand{\code}[1]{\texttt{\textcolor{pinky}{#1}}}
+
+\usebackgroundtemplate{
+\includegraphics[width=\paperwidth,
+height=\paperheight]{Page_169}
+}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title{進階 Python - 1 驗}
+
+\subtitle{用 Python 簡單打造一個屬於自己的投資分析 App}
+
+\author{Brian L. Chen}
+
+\institute{
+  Department of Information Management\\
+  National Taiwan University
+}
+
+\date{IMAGE Camp, \today}
+
+% \logo{\includegraphics[height=1.5cm]{lion-logo.jpg}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{目錄}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\begin{frame}
+\frametitle{目錄}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+\section{課程基本資訊}
+
+%---------------------------------------------------------
+\begin{frame}
+  \begin{itemize}
+    \item 名稱：進階 Python - 製作自己的第一個股市分析 App\footnotemark
+    \item 內容概述：用一個簡單但實用的 App 例子教導高中生一些 Python 能夠做到的事
+    \item 時長：希望可以達到 \alert{\textbf{3 小時}}
+    \item 教材：\code{Python}、屆時範例都會在 GitHub 上面\footnotemark
+  \end{itemize}
+\footnotetext[1]{待訂}
+\footnotetext[2]{學員不用會 GitHub，但助教可能需要知道}
+
+\end{frame}
+
+%---------------------------------------------------------
+
+\section{授課動機}
+
+%---------------------------------------------------------
+%Highlighting text
+\begin{frame}
+  本教學主要目標為讓同學知道 Python 可以在短時間內如何做出一個類似 App 的工具。\\
+  以目前最為流行的股票當作媒介，讓高中生也有機會將資訊與股票市場結合，
+  藉由簡單的分析，給自己未來投資或是家人更多 insights 。
+  
+  \vspace{5mm} %5mm vertical space
+  
+  有鑒於教學時程短暫，本課僅能作為初步介紹用，如果要學習更多相關資源到時候也會公布一份完整的學習清單。
+\end{frame}
+
+\begin{frame}
+  \frametitle{有別於上一屆的地方}
+  上一屆主要是教 \code{function}。此部分很重要沒錯，但希望可以放在\textbf{基礎 Python}就好。
+
+  \vspace{5mm} %5mm vertical space
+  
+  如果真的要教學的話，這邊也可以提供幾個方向：
+  \begin{examples}
+    用 \href{https://livebook.manning.com/book/tiny-python-projects/chapter-11/}{11 Bottles of Beer Song: Writing and testing functions} 來舉例 Function 的重要。應該可以很快就講完。
+  \end{examples}
+
+  進階 Python 想讓同學感受一下自己做一個 App 的感覺，讓程式可以活生生的展現在他人眼前。
+\end{frame}
+%---------------------------------------------------------
+
+\section{課程內容安排}
+\begin{frame}
+\begin{itemize}
+  \item Python Package 介紹
+  \item 網路爬蟲 / 抓取 Yahoo! Finance 資料
+  \item 介紹 Python 畫圖工具           
+  \begin{itemize}
+    \item \code{matplotlib}
+    \item 其他第三方工具
+  \end{itemize}
+  \item 介紹 \href{https://streamlit.io}{Streamlit}                     
+  \item 實作                               
+\end{itemize}
+\end{frame}
+
+\section{進入正題}
+\begin{frame}
+    \frametitle{網路爬蟲？}
+網路爬蟲是可以自動化替你蒐集網頁上資訊的程式
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivation}
+
+    試著想想看，如果你需要各公司的財報資訊來做股市的研究，該怎麼做呢？\\
+    打開瀏覽器，輸入「公開資訊觀測站」的網址，下條件篩選出想找的財報，在下載成 CSV 檔，然後再進行分析？\footnotemark\\
+    \quad \\ 
+    以上流程就要花你十幾二十分鐘！\\
+    如果要同時分析好幾間公司呢？\\
+    2018 年？2017 年？
+    \footnotetext[3]{資料來源：https://medium.com/@bindaguo/網路爬蟲淺談-afcae0694f13}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Python 爬蟲工具}
+    這堂課會需要你安裝幾個 Python 套件，大家可以把它們想像成是善心人士已經寫好的程式，
+    它們讓你可以直接使用套件，完成爬蟲任務。
+
+    \begin{itemize}
+        \item \code{bs4}: 最大宗爬蟲套件
+        \item \code{yfinance}: 已經有人寫好 Yahoo! Finance 的爬蟲軟體啦！
+        \item \code{pandas}: 分析資料最好用
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    
+    {\DejaSans 😁} 讓我們轉移到 Jupyter Notebook 吧！
+
+\end{frame}
+
+
+
+
+\end{document}
