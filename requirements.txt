@@ -1,0 +1,6 @@
+streamlit==0.78.0
+pandas==1.1.1
+pandas_datareader==0.9.0
+yfinance==0.1.55
+plotly==4.9.0
+python_dateutil==2.8.1
