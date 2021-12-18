@@ -11,12 +11,25 @@
 有鑒於教學時程短暫，本課僅能作為初步介紹用，如果要學習更多相關資源請見以下 [Resources](#Resources) 列表。
 
 ## Syllabus
-| 章節  | 內容                                |
-| :---: | ----------------------------------- |
-|   1   | 網路爬蟲 / 抓取 Yahoo! Finance 資料 |
-|   2   | 介紹 Python 畫圖工具                |
-|   3   | 介紹 Streamlit                      |
-|   4   | 實作                                |
+| 章節  | 內容                                               |
+| :---: | -------------------------------------------------- |
+|   1   | 網路爬蟲 / 抓取 Yahoo! Finance 資料                |
+|   2   | 介紹 yfinance Package、Pandas 以及 Python 畫圖工具 |
+|   3   | 介紹 Streamlit                                     |
+|   4   | 實作                                               |
+
+## Getting Onboard
+
+```sh
+pipenv shell
+pip install -r requirements.txt
+```
+
+或可以在 Jupyter Lab 裡面執行：
+
+```sh
+!pip install -r requirements.txt
+```
 
 ## Resources
 + 網路爬蟲 (Web Scraping) / Yahoo! Finance API
