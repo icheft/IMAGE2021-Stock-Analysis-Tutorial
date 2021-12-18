@@ -15,7 +15,7 @@ def stock_price():
 
     st.write(f"## 分析 {stock_obj.info['longName']}")
 
-    price_text = st.write(f'### 目前成交價格為：**{pws.get_price()}**')
+    st.write(f'### 目前成交價格為：**{pws.get_price()}**')
     stock_df = stock_obj.history(
         start='2011-3-12', end='2021-3-12', auto_adjust=False)  # period="max"
 

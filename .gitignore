@@ -10,6 +10,12 @@
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
+Presentation/1.pdf
+Presentation/2.pdf
+Presentation/3.pdf
+
+Notebooks/data/
+
 # IPython
 profile_default/
 ipython_config.py
