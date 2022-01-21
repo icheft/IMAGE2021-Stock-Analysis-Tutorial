@@ -11,8 +11,8 @@ def get_price(stock_id='0050.TW'):
     url = f"https://tw.stock.yahoo.com/d/s/dividend_{stock_id.split('.')[0]}.html"
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
-    price = soup.find(
-        'span', {'class': 'Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)'}).text
+    price = soup.find('span', {
+                      'class': 'Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)'}).text
     return price
 
 
@@ -33,10 +33,10 @@ def get_dividend_yield(stock_id='0050.TW', year=None):
     # 開始進行加總
     total_div = 0
     for year_raw in all_years_raw:
-        year = year_raw.find_all('div')[6].text.split('/')[0]
-        if year == first_year:
+        tmp_year = year_raw.find_all('div')[6].text.split('/')[0]
+        if tmp_year == first_year:
             total_div += float(year_raw.find_all('div')[3].text)
 
     # 利用剛剛的函式幫我們取得現價
     div_yield = total_div / float(get_price(stock_id))
-    return year, div_yield, total_div
+    return first_year, div_yield, total_div
