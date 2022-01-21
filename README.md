@@ -3,7 +3,7 @@
 <h2 align="center">Stockie - Building a Stock Analysis Web App in Python</h2>
 
 
-> Time Required: 2 hours    
+> Time Required: 3 hours    
 > Instructor: Brian L. Chen  
 > Venue: Online   
 
