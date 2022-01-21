@@ -5,5 +5,4 @@ plotly==4.9.0
 python_dateutil==2.8.2
 requests
 streamlit==1.4.0
-yahoo_fin==0.8.9.1
 yfinance==0.1.69
