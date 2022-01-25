@@ -17,19 +17,19 @@ def main():
     readme_text = st.markdown(readme_file.read(), unsafe_allow_html=True)
 
     st.sidebar.title("模式切換")
-    selector = ["課程大綱與說明", '成果展示']
+    selector = ["課程大綱與說明", '評分標準', '成果展示']
     app_mode = st.sidebar.selectbox("選擇教學簡介",
                                     selector)
 
     if app_mode == selector[0]:
         st.sidebar.success('課程說明文件')
-    # elif app_mode == selector[1]:
-    #     readme_text.empty()
-    #     st.sidebar.success('課程教學初稿')
-    #     draft.main()
     elif app_mode == selector[1]:
         readme_text.empty()
-        st.sidebar.success('Demo 一下')
+        st.sidebar.success('評分標準')
+        draft.main()
+    elif app_mode == selector[2]:
+        readme_text.empty()
+        st.sidebar.success('Demo 範例參考')
         demo.main()
 
 
