@@ -11,9 +11,7 @@ def get_price(stock_id="0050.TW"):
     url = f"https://tw.stock.yahoo.com/d/s/dividend_{stock_id.split('.')[0]}.html"
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
-    price = soup.find(
-        "span", {"class": "Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"}
-    ).text
+    price = soup.find("div", {"class": "D(f) Ai(fe) Mb(4px)"}).find("span").text
     return price
 
 
