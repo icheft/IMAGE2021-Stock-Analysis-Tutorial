@@ -75,6 +75,13 @@ pip install -r requirements.txt
 
 請自由發揮，並確保使用者知道怎麼使用（亦即，可能有些地方需要 `label` 或是詳細的說明）。
 
+## 相關連結
+
++ 課程 repository：<https://github.com/icheft/IMAGE2021-Stock-Analysis-Tutorial>
++ 課後表單：<https://forms.gle/Ai5sPeE51Mw1ZfsB6>
++ 評分標準 with demo：<https://share.streamlit.io/icheft/image2021-stock-analysis-tutorial/main?p=metrics>
++ 成果 gallery (repo | 部署網址)：<https://github.com/icheft/IMAGE-st/tree/master> | <https://share.streamlit.io/icheft/image-st>
+
 
 ## Resources
 + 網路爬蟲 (Web Scraping) / Yahoo! Finance API
